@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    IInputMovementHandler inputMovementHandler;
-
     // Start is called before the first frame update
     void Start()
     {
-        inputMovementHandler = new InputMovementHandler(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        inputMovementHandler.ProcessMovement();
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        float verticalAxis = Input.GetAxis("Vertical");
+
+        Vector2 movementVector = new Vector2(horizontalAxis,verticalAxis);
+
+        transform.Translate(movementVector);
     }
 }
